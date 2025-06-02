@@ -1,0 +1,30 @@
+Filme: 
+GET: Lista todos os filmes.(Feito)
+GET: Mostra um filme em específico.(Feito)
+POST: Adiciona um novo filme.(Feito)
+PUT: Atualiza o ranking de todos os filmes(ADM).
+DELETE: Apaga todos os filmes(ADM).(Feito)
+ 
+Filme/{id}:
+GET: Lista as avaliações de um filme específico.
+PUT: Atualiza as informações de um filme específico(ADM).
+POST: Adiciona uma nova avaliação.
+DELETE: Apaga o filme(ADM).
+
+Critico: 
+GET: Lista todos os críticos.
+POST: Adiciona um novo crítico.
+PUT: Atualizar o status de todos os críticos(ativo e inativo)(ADM).
+DELETE: Remove um crítico(ADM).
+
+Critico/{id}:
+GET: Lista todas as avaliações que o crítico fez.
+PUT: Atualiza informações do crítico.
+POST: Adiciona uma avaliação para um filme.
+DELETE: Remove o crítico(ADM).
+
+Critico/{id}/filme/{filmeId}:
+GET: Mostra a avaliação do crítico para um filme específico.
+PUT: Atualiza a nota ou o comentário da avaliação do crítico para o filme.
+POST: Cria uma nova avaliação.
+DELETE: Apaga a avaliação do crítico para o filme(ADM)
