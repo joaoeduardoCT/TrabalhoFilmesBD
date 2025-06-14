@@ -1,9 +1,12 @@
 import express from "express";
-import db from "./src/db.js"; // conexão com Sequelize/MariaDB
+import cors from "cors";             // <-- importar cors aqui
+import db from "./src/db.js";       // conexão com Sequelize/MariaDB
 import dotenv from "dotenv/config.js"; // importa as variáveis de ambiente
-import routes from "./routes.js"; // importa as rotas
+import routes from "./routes.js";   // importa as rotas
 
 const app = express();
+
+app.use(cors());                    // <-- libera CORS para todas as origens
 app.use(express.json());
 
 // Testar conexão com banco de dados
