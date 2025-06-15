@@ -24,7 +24,7 @@ export default db.define(
       allowNull: false,
     },
     elenco: {
-      type: Sequelize.STRING,
+      type: Sequelize.JSON,
       allowNull: false,
     },
     genero: {
@@ -39,5 +39,6 @@ export default db.define(
   {
     tableName: "filme",
     freezeTableName: true,
+    timestamps: false,
   }
 );

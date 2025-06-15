@@ -27,5 +27,6 @@ export default db.define(
   {
     tableName: "usuario",
     freezeTableName: true,
+    timestamps: false,
   }
 );

@@ -1,1 +1,39 @@
-<p>critica works!</p>
+<div class="avaliacao-container">
+  <h2>Avaliar Filme</h2>
+
+  <input
+    type="text"
+    placeholder="Buscar filme"
+    [(ngModel)]="filtro"
+    (input)="filtrarFilmes()"
+  />
+
+  <ul class="lista-filmes">
+    <li *ngFor="let filme of filmesFiltrados" (click)="selecionarFilme(filme)">
+      {{ filme.nome }}
+    </li>
+  </ul>
+
+  <div *ngIf="filmeSelecionado">
+    <h3>{{ filmeSelecionado.nome }}</h3>
+
+    <label>Nota:</label>
+    <div class="estrelas">
+      <ng-container *ngFor="let estrela of [1, 2, 3, 4, 5]">
+        <span
+          class="estrela"
+          [class.selecionada]="estrela <= nota"
+          (click)="selecionarNota(estrela)"
+        >
+          ⭐
+        </span>
+      </ng-container>
+      <span style="margin-left: 10px; font-weight: bold">{{ nota }} / 5</span>
+    </div>
+
+    <label>Comentário:</label>
+    <textarea [(ngModel)]="comentario"></textarea>
+
+    <button (click)="enviarAvaliacao()">Enviar Avaliação</button>
+  </div>
+</div>

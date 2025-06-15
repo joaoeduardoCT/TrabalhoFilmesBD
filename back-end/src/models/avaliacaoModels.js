@@ -43,5 +43,6 @@ export default db.define(
   {
     tableName: "avaliacao",
     freezeTableName: true,
+    timestamps: false,
   }
 );

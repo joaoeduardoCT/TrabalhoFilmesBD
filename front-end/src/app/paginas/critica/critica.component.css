@@ -1,0 +1,41 @@
+.avaliacao-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.lista-filmes {
+  list-style: none;
+  padding-left: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  margin-bottom: 1rem;
+}
+
+.lista-filmes li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.lista-filmes li:hover {
+  background-color: #f0f0f0;
+}
+
+.estrelas {
+  margin: 10px 0;
+}
+
+.estrela {
+  color: lightgray;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.estrela.selecionada {
+  color: gold;
+}
+
