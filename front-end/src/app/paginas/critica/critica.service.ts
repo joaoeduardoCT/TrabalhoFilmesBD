@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CriticaService {
   private filmesUrl = 'http://localhost:3000/filmes';
-  private avaliacoesUrl = 'http://localhost:3000/avaliacoes';
+  private avaliacoesUrl = 'http://localhost:3000/avaliacao';
 
   constructor(private http: HttpClient) {}
 
