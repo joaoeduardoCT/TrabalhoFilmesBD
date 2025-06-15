@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `avaliacao` (
   CONSTRAINT `avaliacao_chk_1` CHECK (((`nota` >= 0) and (`nota` <= 5)))
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela filmesbd2.avaliacao: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela filmesbd2.avaliacao: ~0 rows (aproximadamente)
 DELETE FROM `avaliacao`;
 INSERT INTO `avaliacao` (`id`, `id_usuario`, `id_filme`, `nota`, `ds_comentario`) VALUES
 	(1, 1, 1, 4.5, 'Excelente filme!'),
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `filme` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela filmesbd2.filme: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela filmesbd2.filme: ~0 rows (aproximadamente)
 DELETE FROM `filme`;
 INSERT INTO `filme` (`id`, `nome`, `distribuidora`, `diretor`, `elenco`, `genero`, `ano_lancamento`) VALUES
 	(1, 'Matrix', 'Warner Bros', 'Wachowski', '["Keanu Reeves", "Carrie-Anne Moss"]', 'Ficção Científica', 1999),
@@ -70,8 +70,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Copiando dados para a tabela filmesbd2.usuario: ~2 rows (aproximadamente)
 DELETE FROM `usuario`;
 INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`) VALUES
-	(1, 'João', 'joao@email.com', ''),
-	(2, 'Maria', 'maria@email.com', '');
+	(1, 'João', 'joao@email.com', '$2b$05$KpUKLvlOSAiCwArhpK1In.AkEERO0udOikt/d1kgF25gVyC8AZDOC'),
+	(2, 'Maria', 'maria@email.com', '$2b$05$I8.5ky3DOGpy5xtY36iuheQdLe7f.ywbS3fQAXt1KUnKCOwBJj83C');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
