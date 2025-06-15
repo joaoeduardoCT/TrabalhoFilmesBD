@@ -1,14 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { AuthInterceptor } from '../../interceptors/auth.interceptor';
 import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
   imports: [CommonModule, FormsModule, HttpClientModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
