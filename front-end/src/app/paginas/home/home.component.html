@@ -1,6 +1,12 @@
-<h2>Lista de Filmes</h2>
-<ul>
-  <li *ngFor="let filme of filmes">
-    {{ filme.nome }} ({{ filme.ano_lancamento }})
+<div class="displayPrincipal">
+  <div class="card">
+<h2 class="card-title">Lista de Filmes</h2>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item" *ngFor="let filme of filmes">
+  <p class="card-text" [routerLink]="['/filme', filme.id]" style="cursor: pointer;">
+{{ filme.nome }} ({{ filme.ano_lancamento }})
+        </p>
   </li>
 </ul>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+.displayPrincipal {
+  display: grid;
+  margin-top: 1%;
+  align-items: center;
+  justify-items: center;
+}
+.card {
+  background-color:  #f8f9f9;
+  width: 50%;
+}
