@@ -63,6 +63,7 @@ async function loginUser(req, res) {
 
     const email = req.body.email;
     const senha = req.body.senha;
+    
 
     if (!email || !senha) {
         return res.status(400).json({ error: "Email e senha são obrigatórios"})

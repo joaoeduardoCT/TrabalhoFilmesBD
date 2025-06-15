@@ -12,13 +12,13 @@ app.use(express.json());
 // Testar conexão com banco de dados
 db.authenticate()
   .then(() => {
-    console.log("✅ Conectado ao banco de dados!");
+    console.log("Conectado ao banco de dados!");
   })
   .catch((err) => {
     console.error("❌ Erro ao conectar ao banco:", err);
   });
 
-// (Opcional) Sincroniza tabelas baseadas nos modelos
+// Sincroniza tabelas baseadas nos modelos
 db.sync({ alter: true });
 
 // Usa as rotas importadas
