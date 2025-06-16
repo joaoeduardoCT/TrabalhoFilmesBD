@@ -13,7 +13,9 @@
       <p class="card-text"><strong>Elenco:</strong> {{ filme.elenco }}</p>
 
       <div *ngIf="isAdm">
-        <!-- <button (click)="editarFilme()">Editar</button> -->
+        <button *ngIf="isAdm" [routerLink]="['/editar-filme', filme.id]">
+          Editar
+        </button>
         <button *ngIf="isAdm" (click)="excluirFilme(filme.id)">Excluir</button>
         <button [routerLink]="['/add-filme']">Adicionar Filme</button>
       </div>

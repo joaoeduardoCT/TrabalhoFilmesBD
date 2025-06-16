@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -25,5 +25,9 @@ export class FilmeService {
 
   excluirFilme(id: number) {
     return this.http.delete(`${this.filmesUrl}/${id}`);
+  }
+
+  atualizarFilme(id: number, filme: any) {
+    return this.http.put(`${this.filmesUrl}/${id}`, filme);
   }
 }

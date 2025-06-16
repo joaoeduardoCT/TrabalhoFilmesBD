@@ -1,4 +1,5 @@
 import filmRepository from "../models/filmesModels.js";
+import avaliacaoRepository from "../models/avaliacaoModels.js";
 
 function findAll(req, res) {
   filmRepository.findAll().then((result) => res.json(result));
@@ -22,23 +23,37 @@ function addFilme(req, res) {
 }
 
 async function updateFilme(req, res) {
-  await filmRepository.update(
-    {
-      nome: req.body.nome,
-      distribuidora: req.body.distribuidora,
-      diretor: req.body.diretor,
-      elenco: req.body.elenco,
-      genero: req.body.genero,
-      ano_lancamento: req.body.ano_lancamento,
-    },
-    {
-      where: {
-        id: req.params.id,
+  try {
+    const filmeAtualizado = await filmRepository.update(
+      {
+        nome: req.body.nome,
+        distribuidora: req.body.distribuidora,
+        diretor: req.body.diretor,
+        elenco: req.body.elenco,
+        genero: req.body.genero,
+        ano_lancamento: req.body.ano_lancamento,
       },
-    }
-  );
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
 
-  filmRepository.findByPk(req.params.id).then((result) => res.json(result));
+    if (filmeAtualizado[0] === 0) {
+      return res
+        .status(404)
+        .json({ message: "Filme não encontrado para editar." });
+    }
+
+    const filmeFinal = await filmRepository.findByPk(req.params.id);
+    res.json(filmeFinal);
+  } catch (error) {
+    console.error("Erro ao editar filme:", error);
+    res
+      .status(500)
+      .json({ error: "Erro ao editar o filme", details: error.message });
+  }
 }
 
 async function deleteFilmes(req, res) {
@@ -54,7 +69,6 @@ async function deleteFilmes(req, res) {
 
 async function deleteFilme(req, res) {
   try {
- 
     await avaliacaoRepository.destroy({
       where: { id_filme: req.params.id },
     });
@@ -65,9 +79,11 @@ async function deleteFilme(req, res) {
 
     res.json({ message: "Filme e avaliações deletadas com sucesso" });
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "Erro ao deletar o filme", details: error.message });
+    console.error("Erro ao deletar filme:", error);
+    res.status(500).json({
+      error: "Erro ao deletar o filme",
+      details: error.message,
+    });
   }
 }
 
@@ -114,11 +130,9 @@ async function findByDistribuidora(req, res) {
 
     if (filmes.length === 0) {
       // === verifica se são iguais e se são do mesmo tipo
-      return res
-        .status(404)
-        .json({
-          message: "Nenhum filme encontrado para a distribuidora fornecida.",
-        });
+      return res.status(404).json({
+        message: "Nenhum filme encontrado para a distribuidora fornecida.",
+      });
     }
 
     res.json(filmes);

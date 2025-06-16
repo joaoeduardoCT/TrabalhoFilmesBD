@@ -1,0 +1,29 @@
+<h2>Editar Filme</h2>
+
+<form (ngSubmit)="editarFilme()" *ngIf="filme">
+  <label>Nome:
+    <input [(ngModel)]="filme.nome" name="nome" required />
+  </label><br />
+
+  <label>Distribuidora:
+    <input [(ngModel)]="filme.distribuidora" name="distribuidora" />
+  </label><br />
+
+  <label>Diretor:
+    <input [(ngModel)]="filme.diretor" name="diretor" />
+  </label><br />
+
+  <label>Elenco:
+    <input [(ngModel)]="filme.elenco" name="elenco" />
+  </label><br />
+
+  <label>Gênero:
+    <input [(ngModel)]="filme.genero" name="genero" />
+  </label><br />
+
+  <label>Ano de Lançamento:
+    <input type="number" [(ngModel)]="filme.ano_lancamento" name="ano_lancamento" />
+  </label><br />
+
+  <button type="submit">Salvar</button>
+</form>
