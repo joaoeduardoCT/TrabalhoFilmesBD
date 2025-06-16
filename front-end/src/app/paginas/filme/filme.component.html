@@ -1,1 +1,16 @@
-<p>filme works!</p>
+<div class="displayPrincipal">
+  <div class="card" *ngIf="filme">
+    <div class="card-body">
+      <h2 class="card-title">{{ filme.nome }}</h2>
+      <p class="card-text"><strong>Diretor:</strong> {{ filme.diretor }}</p>
+      <p class="card-text"><strong>Distribuidora:</strong> {{ filme.distribuidora }}</p>
+      <p class="card-text"><strong>Gênero:</strong> {{ filme.genero }}</p>
+      <p class="card-text"><strong>Ano de Lançamento:</strong> {{ filme.ano_lancamento }}</p>
+      <p class="card-text"><strong>Elenco:</strong> {{ filme.elenco }}</p>
+    </div>
+
+    <div class="card-body " *ngIf="!filme">
+      Carregando informações do filme...
+    </div>
+  </div>
+</div>

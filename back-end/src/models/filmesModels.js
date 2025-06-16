@@ -25,7 +25,7 @@ export default db.define(
     },
     elenco: {
       type: Sequelize.JSON,
-      allowNull: false,
+      allowNull: true,
     },
     genero: {
       type: Sequelize.STRING,
