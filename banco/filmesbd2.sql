@@ -29,16 +29,17 @@ CREATE TABLE IF NOT EXISTS `avaliacao` (
   PRIMARY KEY (`id`),
   KEY `id_usuario` (`id_usuario`),
   KEY `id_filme` (`id_filme`),
-  CONSTRAINT `avaliacao_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
-  CONSTRAINT `avaliacao_ibfk_2` FOREIGN KEY (`id_filme`) REFERENCES `filme` (`id`),
+  CONSTRAINT `avaliacao_ibfk_19` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
+  CONSTRAINT `avaliacao_ibfk_20` FOREIGN KEY (`id_filme`) REFERENCES `filme` (`id`),
   CONSTRAINT `avaliacao_chk_1` CHECK (((`nota` >= 0) and (`nota` <= 5)))
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela filmesbd2.avaliacao: ~0 rows (aproximadamente)
 DELETE FROM `avaliacao`;
 INSERT INTO `avaliacao` (`id`, `id_usuario`, `id_filme`, `nota`, `ds_comentario`) VALUES
 	(1, 1, 1, 4.5, 'Excelente filme!'),
-	(2, 2, 2, 5.0, 'Obra-prima do cinema!');
+	(2, 2, 2, 5.0, 'Obra-prima do cinema!'),
+	(4, 1, 1, 5.0, NULL);
 
 -- Copiando estrutura para tabela filmesbd2.filme
 CREATE TABLE IF NOT EXISTS `filme` (
@@ -46,17 +47,18 @@ CREATE TABLE IF NOT EXISTS `filme` (
   `nome` varchar(255) NOT NULL,
   `distribuidora` varchar(255) NOT NULL,
   `diretor` varchar(255) NOT NULL,
-  `elenco` json NOT NULL,
+  `elenco` json DEFAULT NULL,
   `genero` varchar(255) NOT NULL,
   `ano_lancamento` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela filmesbd2.filme: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela filmesbd2.filme: ~2 rows (aproximadamente)
 DELETE FROM `filme`;
 INSERT INTO `filme` (`id`, `nome`, `distribuidora`, `diretor`, `elenco`, `genero`, `ano_lancamento`) VALUES
 	(1, 'Matrix', 'Warner Bros', 'Wachowski', '["Keanu Reeves", "Carrie-Anne Moss"]', 'Ficção Científica', 1999),
-	(2, 'O Senhor dos Anéis', 'New Line Cinema', 'Peter Jackson', '["Elijah Wood", "Ian McKellen"]', 'Fantasia', 2001);
+	(2, 'O Senhor dos Anéis', 'New Line Cinema', 'Peter Jackson', '["Elijah Wood", "Ian McKellen"]', 'Fantasia', 2001),
+	(3, 'ainda estou aqui', 'globo filmes', 'walter sales', '["Fernanda", "Torres"]', 'Drama', 2024);
 
 -- Copiando estrutura para tabela filmesbd2.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -64,14 +66,15 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela filmesbd2.usuario: ~2 rows (aproximadamente)
 DELETE FROM `usuario`;
-INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`) VALUES
-	(1, 'João', 'joao@email.com', '$2b$05$KpUKLvlOSAiCwArhpK1In.AkEERO0udOikt/d1kgF25gVyC8AZDOC'),
-	(2, 'Maria', 'maria@email.com', '$2b$05$I8.5ky3DOGpy5xtY36iuheQdLe7f.ywbS3fQAXt1KUnKCOwBJj83C');
+INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `is_admin`) VALUES
+	(1, 'João', 'joao@email.com', '$2b$05$KpUKLvlOSAiCwArhpK1In.AkEERO0udOikt/d1kgF25gVyC8AZDOC', 1),
+	(2, 'Maria', 'maria@email.com', '$2b$05$I8.5ky3DOGpy5xtY36iuheQdLe7f.ywbS3fQAXt1KUnKCOwBJj83C', 0);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

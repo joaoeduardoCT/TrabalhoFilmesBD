@@ -1,1 +1,25 @@
-<p>add-filme works!</p>
+<h2>Adicionar Filme</h2>
+
+<form (ngSubmit)="adicionarFilme()">
+  <label>Nome:</label>
+  <input type="text" [(ngModel)]="filme.nome" name="nome" required />
+
+  <label>Distribuidora:</label>
+  <input type="text" [(ngModel)]="filme.distribuidora" name="distribuidora" required />
+
+  <label>Diretor:</label>
+  <input type="text" [(ngModel)]="filme.diretor" name="diretor" required />
+
+  <label>Elenco (JSON):</label>
+  <textarea [(ngModel)]="elencoTexto" name="elenco" rows="4" required></textarea>
+
+  <label>Gênero:</label>
+  <input type="text" [(ngModel)]="filme.genero" name="genero" required />
+
+  <label>Ano de Lançamento:</label>
+  <input type="number" [(ngModel)]="filme.ano_lancamento" name="ano_lancamento" required />
+
+  <button type="submit">Salvar</button>
+</form>
+
+<p *ngIf="mensagem">{{ mensagem }}</p>

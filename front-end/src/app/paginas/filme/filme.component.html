@@ -12,10 +12,11 @@
       </p>
       <p class="card-text"><strong>Elenco:</strong> {{ filme.elenco }}</p>
 
-          <div *ngIf="isAdm">
-      <!-- <button (click)="editarFilme()">Editar</button> -->
-      <button *ngIf="isAdm" (click)="excluirFilme(filme.id)">Excluir</button>
-    </div>
+      <div *ngIf="isAdm">
+        <!-- <button (click)="editarFilme()">Editar</button> -->
+        <button *ngIf="isAdm" (click)="excluirFilme(filme.id)">Excluir</button>
+        <button [routerLink]="['/add-filme']">Adicionar Filme</button>
+      </div>
     </div>
 
     <div class="card-body" *ngIf="!filme">
