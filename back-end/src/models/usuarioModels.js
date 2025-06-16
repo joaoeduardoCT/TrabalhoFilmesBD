@@ -23,6 +23,12 @@ export default db.define(
       type: Sequelize.STRING,
       allowNull: false,
     },
+    isAdm: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+      field: "is_admin",
+    },
   },
   {
     tableName: "usuario",

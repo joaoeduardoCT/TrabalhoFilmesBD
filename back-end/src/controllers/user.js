@@ -18,6 +18,18 @@ async function verifyJWT(req, res, next) {
   });
 }
 
+async function verifyADM(req, res, next) {
+  const userId = req.user.id;
+
+  const usuario = await userRepository.findByPk(userId);
+
+  if (!usuario || !usuario.isAdm) {
+    return res.status(403).json({ error: "Acesso restrito a administradores" });
+  }
+
+  next();
+}
+
 function findUsers(req, res) {
   userRepository
     .findAll()
@@ -94,7 +106,16 @@ async function loginUser(req, res) {
     }
   );
 
-  res.json({ message: "Login bem-sucedido", token });
+  res.json({
+    message: "Login bem-sucedido",
+    token,
+    user: {
+      id: user.id,
+      nome: user.nome,
+      email: user.email,
+      isAdm: user.isAdm,
+    },
+  });
 }
 
 function logout(req, res) {
@@ -206,6 +227,7 @@ export default {
   updateUser,
   deleteUsers,
   verifyJWT,
+  verifyADM,
   findByEmail,
   findByNome,
 };

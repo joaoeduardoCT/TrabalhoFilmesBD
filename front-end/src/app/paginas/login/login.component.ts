@@ -31,6 +31,7 @@ export class LoginComponent {
     this.auth.login(this.email, this.senha).subscribe({
       next: (res) => {
         localStorage.setItem('token', res.token);
+        localStorage.setItem('usuario', JSON.stringify(res.user));
         this.mensagem = 'Login bem-sucedido!';
         this.router.navigate(['/home']);
       },

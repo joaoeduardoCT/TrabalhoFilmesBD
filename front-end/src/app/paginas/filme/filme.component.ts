@@ -7,10 +7,11 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   selector: 'app-filme',
   templateUrl: './filme.component.html',
-  styleUrl: './filme.component.css'
+  styleUrl: './filme.component.css',
 })
 export class FilmeComponent implements OnInit {
   filme: any;
+  isAdm = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +23,19 @@ export class FilmeComponent implements OnInit {
     this.filmeService.getFilmePorId(id).subscribe((data) => {
       this.filme = data;
     });
+
+    const user = JSON.parse(localStorage.getItem('usuario') || '{}');
+    this.isAdm = user.isAdm === true;
+  }
+
+  excluirFilme(id: number) {
+    this.filmeService.excluirFilme(id).subscribe({
+      next: () => {
+        alert(`Filme com ID ${id} excluído com sucesso`);
+      },
+      error: (err) => {
+        alert('Erro ao excluir filme: ' + err.error.message);
+      },
+    });
   }
 }
-

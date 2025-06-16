@@ -12,10 +12,10 @@ routes.get("/filmes/:id", filmes.findFilme);
 routes.get("/filmes/:genero", filmes.findByGenero);
 routes.get("/filmes/:distribuidora", filmes.findByDistribuidora);
 //
-routes.post("/filmes", user.verifyJWT, filmes.addFilme);
-routes.put("/filmes/:id", user.verifyJWT, filmes.updateFilme);
-routes.delete("/filmes/:id", user.verifyJWT, filmes.deleteFilme);
-routes.delete("/filmes", user.verifyJWT, filmes.deleteFilmes);
+routes.post("/filmes", user.verifyJWT, user.verifyADM ,filmes.addFilme);
+routes.put("/filmes/:id", user.verifyJWT, user.verifyADM ,filmes.updateFilme);
+routes.delete("/filmes/:id", user.verifyJWT, user.verifyADM ,filmes.deleteFilme);
+routes.delete("/filmes", user.verifyJWT, user.verifyADM ,filmes.deleteFilmes);
 
 //Chama os métodos do CRUD de usuarios
 routes.get("/usuario", user.findUsers);
@@ -38,7 +38,7 @@ routes.get("/avaliacao", avaliacao.findAvaliacoes);
 routes.get("/avaliacao/:id", avaliacao.findAvaliacao);
 // selects extra
 routes.get("/avaliacao/:usuarioId", avaliacao.findAvaliacoesByUsuario);
-routes.get("/avaliacao/minhas", UserController.verifyJWT, AvaliacaoController.findMinhasAvaliacoes);
+routes.get("/avaliacao/minhas", user.verifyJWT, avaliacao.findMinhasAvaliacoes);
 routes.get("/avaliacao/:filmeId", avaliacao.findAvaliacoesByFilme);
 //
 routes.post("/avaliacao", user.verifyJWT, avaliacao.addAvaliacao);
