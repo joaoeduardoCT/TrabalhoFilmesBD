@@ -1,0 +1,8 @@
+<div *ngFor="let a of avaliacoes">
+  <p>Filme ID: {{ a.id_filme }}</p>
+  <p>Nota: {{ a.nota }}</p>
+  <p>Comentário: {{ a.ds_comentario }}</p>
+  <button (click)="editar(a)">Editar</button>
+  <button (click)="deletar(a.id)">Deletar</button>
+</div>
+

@@ -38,6 +38,7 @@ routes.get("/avaliacao", avaliacao.findAvaliacoes);
 routes.get("/avaliacao/:id", avaliacao.findAvaliacao);
 // selects extra
 routes.get("/avaliacao/:usuarioId", avaliacao.findAvaliacoesByUsuario);
+routes.get("/avaliacao/minhas", UserController.verifyJWT, AvaliacaoController.findMinhasAvaliacoes);
 routes.get("/avaliacao/:filmeId", avaliacao.findAvaliacoesByFilme);
 //
 routes.post("/avaliacao", user.verifyJWT, avaliacao.addAvaliacao);

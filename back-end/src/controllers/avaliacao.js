@@ -27,6 +27,24 @@ function findAvaliacao(req, res) {
     );
 }
 
+// Rota: GET /avaliacoes/minhas
+async function findMinhasAvaliacoes(req, res) {
+  const idUsuario = req.user.id;  // Pegando o id do usuário vindo do JWT
+
+  try {
+    const avaliacoes = await avaliacaoRepository.findAll({
+      where: { id_usuario: idUsuario },
+    });
+
+    res.json(avaliacoes);
+  } catch (error) {
+    res.status(500).json({
+      error: "Erro ao buscar suas avaliações",
+      details: error.message,
+    });
+  }
+}
+
 function addAvaliacao(req, res) {
   const { id_usuario, id_filme, nota, ds_comentario } = req.body;
 
@@ -169,4 +187,5 @@ export default {
   deleteAvaliacaos,
   findAvaliacoesByUsuario,
   findAvaliacoesByFilme,
+  findMinhasAvaliacoes
 };
