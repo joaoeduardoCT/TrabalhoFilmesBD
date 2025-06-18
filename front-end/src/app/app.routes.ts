@@ -7,6 +7,7 @@ import { FilmeComponent } from './paginas/filme/filme.component';
 import { HomeComponent } from './paginas/home/home.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { PerfilComponent } from './paginas/perfil/perfil.component';
+import { PesquisarAtorComponent } from './paginas/pesquisar-ator/pesquisar-ator.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -16,4 +17,5 @@ export const routes: Routes = [
   { path: 'critica', component: CriticaComponent },
   { path: 'add-filme', component: AddFilmeComponent },
   { path: 'editar-filme/:id', component: EditarFilmeComponent },
+  { path: 'pesquisarAtor', component: PesquisarAtorComponent },
 ];

@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Pesquise filmes por ator/atriz</h2>
+
+  <form class="d-flex justify-content-center mb-4">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Digite o nome do ator ou atriz"
+      [(ngModel)]="filtro"
+      name="filtro"
+      (input)="filtrarFilmes()"
+    />
+    <button class="btn btn-primary" type="button" (click)="filtrarFilmes()">
+      Pesquisar
+    </button>
+  </form>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let filme of filmesFiltrados">
+      <strong>{{ filme.nome }}</strong> ({{ filme.ano_lancamento }})<br />
+      <small>Elenco: {{ getElencoFormatado(filme.elenco) }}</small>
+    </li>
+  </ul>
+
+  <div *ngIf="filmesFiltrados.length === 0" class="text-center mt-3">
+    <p class="text-muted">Nenhum filme encontrado com esse ator/atriz.</p>
+  </div>
+</div>
