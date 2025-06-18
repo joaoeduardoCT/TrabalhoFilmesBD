@@ -3,12 +3,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { NavbarComponent } from '../../navbar/navbar.component';
 import { Filme, HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterLink],
+  imports: [CommonModule, HttpClientModule, RouterLink, NavbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

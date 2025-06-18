@@ -1,25 +1,88 @@
-<h2>Adicionar Filme</h2>
+<app-navbar></app-navbar>
 
-<form (ngSubmit)="adicionarFilme()">
-  <label>Nome:</label>
-  <input type="text" [(ngModel)]="filme.nome" name="nome" required />
+<div
+  class="d-flex justify-content-center align-items-center"
+  style="min-height: 100vh"
+>
+  <div class="card p-4" style="width: 100%; max-width: 500px">
+    <h2 class="text-center mb-4">Adicionar Filme</h2>
 
-  <label>Distribuidora:</label>
-  <input type="text" [(ngModel)]="filme.distribuidora" name="distribuidora" required />
+    <form (ngSubmit)="adicionarFilme()" class="d-flex flex-column gap-3">
+      <div>
+        <label for="nome">Nome:</label>
+        <input
+          type="text"
+          id="nome"
+          [(ngModel)]="filme.nome"
+          name="nome"
+          class="form-control"
+          required
+        />
+      </div>
 
-  <label>Diretor:</label>
-  <input type="text" [(ngModel)]="filme.diretor" name="diretor" required />
+      <div>
+        <label for="distribuidora">Distribuidora:</label>
+        <input
+          type="text"
+          id="distribuidora"
+          [(ngModel)]="filme.distribuidora"
+          name="distribuidora"
+          class="form-control"
+          required
+        />
+      </div>
 
-  <label>Elenco (JSON):</label>
-  <textarea [(ngModel)]="elencoTexto" name="elenco" rows="4" required></textarea>
+      <div>
+        <label for="diretor">Diretor:</label>
+        <input
+          type="text"
+          id="diretor"
+          [(ngModel)]="filme.diretor"
+          name="diretor"
+          class="form-control"
+          required
+        />
+      </div>
 
-  <label>Gênero:</label>
-  <input type="text" [(ngModel)]="filme.genero" name="genero" required />
+      <div>
+        <label for="elenco">Elenco (JSON):</label>
+        <textarea
+          id="elenco"
+          [(ngModel)]="elencoTexto"
+          name="elenco"
+          rows="4"
+          class="form-control"
+          required
+        ></textarea>
+      </div>
 
-  <label>Ano de Lançamento:</label>
-  <input type="number" [(ngModel)]="filme.ano_lancamento" name="ano_lancamento" required />
+      <div>
+        <label for="genero">Gênero:</label>
+        <input
+          type="text"
+          id="genero"
+          [(ngModel)]="filme.genero"
+          name="genero"
+          class="form-control"
+          required
+        />
+      </div>
 
-  <button type="submit">Salvar</button>
-</form>
+      <div>
+        <label for="ano">Ano de Lançamento:</label>
+        <input
+          type="number"
+          id="ano"
+          [(ngModel)]="filme.ano_lancamento"
+          name="ano_lancamento"
+          class="form-control"
+          required
+        />
+      </div>
 
-<p *ngIf="mensagem">{{ mensagem }}</p>
+      <button type="submit" class="btn btn-primary w-100">Salvar</button>
+    </form>
+
+    <p *ngIf="mensagem" class="text-success text-center mt-3">{{ mensagem }}</p>
+  </div>
+</div>

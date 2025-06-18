@@ -4,13 +4,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AuthInterceptor } from '../../interceptors/auth.interceptor';
+import { NavbarComponent } from '../../navbar/navbar.component';
 import { LoginService } from '../login/login.service';
 import { CriticaService } from './critica.service';
 
 @Component({
   selector: 'app-critica',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, NavbarComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

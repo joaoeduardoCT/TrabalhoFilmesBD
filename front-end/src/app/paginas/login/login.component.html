@@ -1,18 +1,40 @@
-<div class="displayPrincipal">
-<div class="card">
-    <div class="card-body">
-  <h2 class="card-title">Login</h2>
-  <form (ngSubmit)="login()">
-    <label>Email:</label><br />
-    <input type="email" [(ngModel)]="email" name="email" required><br /><br />
+<div
+  class="d-flex justify-content-center align-items-center vh-100"
+  style="background-color: rgb(158, 171, 207)"
+>
+  <div class="card shadow p-4" style="width: 100%; max-width: 400px">
+    <h2 class="text-center mb-4">Login</h2>
 
-    <label>Senha:</label><br />
-    <input type="password" [(ngModel)]="senha" name="senha" required><br /><br />
+    <form (ngSubmit)="login()" class="d-flex flex-column gap-3">
+      <div>
+        <label for="email" class="form-label">Email:</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          class="form-control"
+        />
+      </div>
 
-    <button class="btn btn-primary" type="submit">Entrar</button>
-  </form>
+      <div>
+        <label for="senha" class="form-label">Senha:</label>
+        <input
+          id="senha"
+          type="password"
+          [(ngModel)]="senha"
+          name="senha"
+          required
+          class="form-control"
+        />
+      </div>
 
-  <p *ngIf="mensagem">{{ mensagem }}</p>
-</div>
+      <button type="submit" class="btn btn-primary w-100">Entrar</button>
+
+      <p *ngIf="mensagem" class="text-danger text-center mt-3">
+        {{ mensagem }}
+      </p>
+    </form>
   </div>
 </div>

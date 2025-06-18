@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="avaliacao-container">
   <h2>Avaliar Filme</h2>
 
@@ -32,7 +33,11 @@
     </div>
 
     <label>Comentário:</label>
+    <br />
     <textarea [(ngModel)]="comentario"></textarea>
+
+    <br />
+    <br />
 
     <button (click)="enviarAvaliacao()">Enviar Avaliação</button>
   </div>

@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="displayPrincipal">
   <div class="card" *ngIf="filme">
     <div class="card-body">
@@ -12,12 +13,29 @@
       </p>
       <p class="card-text"><strong>Elenco:</strong> {{ filme.elenco }}</p>
 
+      <br />
+
       <div *ngIf="isAdm">
-        <button *ngIf="isAdm" [routerLink]="['/editar-filme', filme.id]">
+        <button
+          class="btn btn-primary"
+          style="
+            margin-right: 15px;
+            background-color: rgba(230, 230, 9, 0.815);
+            color: black;
+          "
+          *ngIf="isAdm"
+          [routerLink]="['/editar-filme', filme.id]"
+        >
           Editar
         </button>
-        <button *ngIf="isAdm" (click)="excluirFilme(filme.id)">Excluir</button>
-        <button [routerLink]="['/add-filme']">Adicionar Filme</button>
+        <button
+          class="btn btn-secondary"
+          style="background-color: red; color: black"
+          *ngIf="isAdm"
+          (click)="excluirFilme(filme.id)"
+        >
+          Excluir
+        </button>
       </div>
     </div>
 

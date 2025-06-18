@@ -1,8 +1,25 @@
-<div *ngFor="let a of avaliacoes">
-  <p>Filme ID: {{ a.id_filme }}</p>
-  <p>Nota: {{ a.nota }}</p>
-  <p>Comentário: {{ a.ds_comentario }}</p>
-  <button (click)="editar(a)">Editar</button>
-  <button (click)="deletar(a.id)">Deletar</button>
-</div>
+<app-navbar></app-navbar>
 
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" *ngFor="let a of avaliacoes">
+      <div class="card h-100 shadow">
+        <div class="card-body">
+          <h5 class="card-title">Filme: {{ getNomeFilme(a.id_filme) }}</h5>
+          <p class="card-text"><strong>Nota:</strong> {{ a.nota }}</p>
+          <p class="card-text">
+            <strong>Comentário:</strong> {{ a.ds_comentario }}
+          </p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <button class="btn btn-sm btn-outline-primary" (click)="editar(a)">
+            Editar
+          </button>
+          <button class="btn btn-sm btn-outline-danger" (click)="deletar(a.id)">
+            Deletar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

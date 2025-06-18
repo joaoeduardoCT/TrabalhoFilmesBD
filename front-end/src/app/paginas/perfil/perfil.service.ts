@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Avaliacao {
@@ -22,8 +22,8 @@ export class PerfilService {
   getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
     return new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     });
   }
 
@@ -50,12 +50,19 @@ export class PerfilService {
     return this.http.delete(`${this.avaliacoesUrl}/${id}`, { headers });
   }
 
-  editarAvaliacao(id: number, novaNota: number, novoComentario: string): Observable<Avaliacao> {
+  editarAvaliacao(
+    id: number,
+    novaNota: number,
+    novoComentario: string
+  ): Observable<Avaliacao> {
     const headers = this.getAuthHeaders();
-    return this.http.put<Avaliacao>(`${this.avaliacoesUrl}/${id}`, {
-      nota: novaNota,
-      ds_comentario: novoComentario
-    }, { headers });
+    return this.http.put<Avaliacao>(
+      `${this.avaliacoesUrl}/${id}`,
+      {
+        nota: novaNota,
+        ds_comentario: novoComentario,
+      },
+      { headers }
+    );
   }
 }
-

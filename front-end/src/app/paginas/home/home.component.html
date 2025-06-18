@@ -1,12 +1,17 @@
+<app-navbar></app-navbar>
 <div class="displayPrincipal">
   <div class="card">
-<h2 class="card-title">Lista de Filmes</h2>
-<ul class="list-group list-group-flush">
-  <li class="list-group-item" *ngFor="let filme of filmes">
-  <p class="card-text" [routerLink]="['/filme', filme.id]" style="cursor: pointer;">
-{{ filme.nome }} ({{ filme.ano_lancamento }})
+    <h2 class="card-title" style="text-align: center">Lista de Filmes</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let filme of filmes">
+        <p
+          class="card-text"
+          [routerLink]="['/filme', filme.id]"
+          style="cursor: pointer"
+        >
+          {{ filme.nome }} ({{ filme.ano_lancamento }})
         </p>
-  </li>
-</ul>
+      </li>
+    </ul>
   </div>
 </div>

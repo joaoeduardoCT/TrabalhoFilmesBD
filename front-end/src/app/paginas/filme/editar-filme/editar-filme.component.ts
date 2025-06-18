@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { NavbarComponent } from '../../../navbar/navbar.component';
 import { FilmeService } from '../filme.service';
 
 @Component({
   selector: 'app-editar-filme',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, NavbarComponent],
   templateUrl: './editar-filme.component.html',
   styleUrl: './editar-filme.component.css',
 })

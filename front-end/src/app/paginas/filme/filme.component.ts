@@ -1,10 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+
+import { NavbarComponent } from '../../navbar/navbar.component';
 import { FilmeService } from './filme.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NavbarComponent],
   selector: 'app-filme',
   templateUrl: './filme.component.html',
   styleUrl: './filme.component.css',
