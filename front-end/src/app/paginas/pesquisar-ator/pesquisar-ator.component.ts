@@ -27,27 +27,34 @@ export class PesquisarAtorComponent implements OnInit {
   }
 
   filtrarFilmes(): void {
-    const filtroLower = this.filtro.toLowerCase();
-
     this.filmesFiltrados = this.filmes.filter((filme) => {
+      const termo = this.filtro.toLowerCase();
+      if (Array.isArray(filme.elenco)) {
+        return filme.elenco.some((ator: string) =>
+          ator.toLowerCase().includes(termo)
+        );
+      }
       try {
         const elenco = JSON.parse(filme.elenco);
-        return elenco.some((ator: string) =>
-          ator.toLowerCase().includes(filtroLower)
+        return (
+          Array.isArray(elenco) &&
+          elenco.some((ator: string) => ator.toLowerCase().includes(termo))
         );
-      } catch (e) {
-        console.error('Erro ao analisar elenco JSON:', e);
+      } catch (err) {
+        console.error('Erro ao analisar elenco JSON:', err);
         return false;
       }
     });
-
-    console.log('Filmes encontrados:', this.filmesFiltrados);
   }
 
-  getElencoFormatado(elencoJson: string): string {
-    try {
-      const elenco = JSON.parse(elencoJson);
+  getElencoFormatado(elenco: any): string {
+    if (Array.isArray(elenco)) {
       return elenco.join(', ');
+    }
+
+    try {
+      const parsed = JSON.parse(elenco);
+      return Array.isArray(parsed) ? parsed.join(', ') : 'Elenco inválido';
     } catch {
       return 'Elenco inválido';
     }
