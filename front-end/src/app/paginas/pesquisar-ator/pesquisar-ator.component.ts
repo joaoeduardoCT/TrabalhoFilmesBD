@@ -20,6 +20,7 @@ export class PesquisarAtorComponent implements OnInit {
 
   ngOnInit(): void {
     this.criticaService.getFilmes().subscribe((data) => {
+      console.log(data);
       this.filmes = data;
       this.filmesFiltrados = data;
     });
@@ -39,6 +40,8 @@ export class PesquisarAtorComponent implements OnInit {
         return false;
       }
     });
+
+    console.log('Filmes encontrados:', this.filmesFiltrados);
   }
 
   getElencoFormatado(elencoJson: string): string {
